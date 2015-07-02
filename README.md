@@ -2,7 +2,7 @@
 
 Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium Webdriver (for web applications) and Appium (for native and mobile web applications).
 
-In this tutorial we discuss how to run a test with Selenium Webdriver on Sauce Labs.
+In this tutorial we discuss how to run a test with Selenium Webdriver and Java on Sauce Labs.
 
 ##Prerequisites
 Before running automated tests on Sauce Labs you must install JDK 1.6 (or higher) (not JRE).
