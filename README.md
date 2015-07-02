@@ -7,7 +7,7 @@ In this tutorial we discuss how to run a test with Selenium Webdriver and Java o
 ##Prerequisites
 Before running automated tests on Sauce Labs you must install JDK 1.6 (or higher) (not JRE).
 
-Note: To run tests in parallel or with a test framework like TestNG or Junit you will need to install a project managment and comprehension tool like Maven or Ant (explained later).
+__Note__: *To run tests in parallel or with a test framework like TestNG or Junit you will need to install a project managment and comprehension tool like Maven or Ant (explained later).*
 
 ##Code Example	
 
