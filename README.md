@@ -72,7 +72,7 @@ For instance, the SampleSauceTest.java references all of the dependent jar files
 javac -cp ".:./selenium-2.46.0/selenium-java-2.46.0.jar:./selenium-2.46.0/selenium-java-2.46.0-srcs.jar:./selenium-2.46.0/libs/*" SampleSauceTest.java
 ```
 
-Note: You need to specify the correct path for each Jar file in accordance to your system’s file structure.
+__Note:__ *You need to specify the correct path for each Jar file in accordance to your system’s file structure.*
 
 The java command is used to run the compiled .class file.
 
@@ -90,9 +90,9 @@ WebDriver driver = new FirefoxDriver()
 ```
 To run on Sauce, you need to use the general RemoteWebDriver instance instead of the browser-specific FirefoxDriver instance. You must then pass two parameters: a URL that points your test to Sauce Labs and DesiredCapabilities.
 
-__Note:__ RemoteWebDriver is a standard Selenium interface. It allows you to perform all tests that you could do with a local Selenium test. The only difference is the URL that makes the test run using a browser on Sauce Labs' server.
+__Note:__ *RemoteWebDriver is a standard Selenium interface. It allows you to perform all tests that you could do with a local Selenium test. The only difference is the URL that makes the test run using a browser on Sauce Labs' server.*
 
-Here is a full look at the setup part of our test:
+Here is a full look at the setup component of our test:
 
 ```java
 public class SampleSauceTest {
@@ -154,12 +154,12 @@ Sauce Connect is a tunneling app which allows you to execute tests securely when
 ##Running Tests in Parallel
 Now that you are running tests on Sauce, you may wonder how you can run your tests faster. One way to increase speed is by running tests in parallel across multiple virtual machines.
 
-To achieve this in Java most use one of two popular frameworks: TestNG and Java. Here are links to two example projects written in each. They are designed to run in parallel. You can clone them and add your own test cases if you want:
+To achieve this in Java most use one of two popular third party frameworks: TestNG and Java. Here are links to two example projects written in each. They are designed to run in parallel. You can clone them and add your own test cases if you want:
 
 1. https://github.com/ndmanvar/SeleniumJavaJunit
 2. https://github.com/ndmanvar/SeleniumJavaTestNG
 
-__Note:__ Tests can be run in parallel at two levels, and you can run your tests in parallel across multiple browsers. For example, if you have 10 tests and want to run on 5 browsers this would be parallelism of 5. You can also run tests across browsers and each test in parallel. Using our previous example this would be more like 50 parallel tests. Doing the latter requires that your tests are written in a way that they do not collide with one another. For more on this see Selenium WebDriver - Running Your Tests in Parallel blog.
+__Note:__ *Tests can be run in parallel at two levels, you can run your tests in parallel and you can run your tests in parallel across multiple browsers. For example, if you have 10 tests and want to run on 5 browsers this would be parallelism of 5. You can also run tests across browsers and each test in parallel. Using our previous example this would be more like 50 parallel tests. Doing the latter requires that your tests are written in a way that they do not collide with one another. For more on this see Selenium WebDriver - Running Your Tests in Parallel blog.*
 
 ####Maven, Pom and Dependencies
 The first thing we need to do regardless of which framework we have chosen is to install a project management tool like Maven or Ant. We'll use Maven in this tutorial. 
@@ -208,9 +208,6 @@ For TestNG:
 
 ######3. Java Helper Library
 The Java Helper Library handles reporting between your tests and Sauce Labs. It allows you to see useful information like the test name and pass/fail status in your Sauce Labs [Dashboard]().
-
-
-
 
 For Junit:
 ```xml
