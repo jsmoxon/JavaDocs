@@ -146,7 +146,7 @@ DesiredCapabilities caps = new DesiredCapabilities();
 ```
  Using our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) you can easily determine the correct desired capabilities for your test.
 
- ##Running tests against local applications
+##Running tests against local applications
 If your test application is not publicly available you will need to use Sauce Connect so that Sauce can reach it. 
 
 Sauce Connect is a tunneling app which allows you to execute tests securely when testing behind firewalls or on localhost. For more detailed information, please visit the [Sauce Connect docs](https://docs.saucelabs.com/reference/sauce-connect/). 
