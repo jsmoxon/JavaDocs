@@ -10,8 +10,7 @@ In this tutorial we discuss how to run a test with Selenium Webdriver and Java o
 3. [Running Tests on Sauce](https://github.com/jsmoxon/JavaDocs#running-tests-on-sauce)
 4. [Running Against Local Applications](https://github.com/jsmoxon/JavaDocs#running-tests-against-local-applications)
 5. [Running Tests in Parallel](https://github.com/jsmoxon/JavaDocs#running-tests-in-parallel)
-6. [Reporting to the Sauce Labs Dashboard]()
-6. 
+6. [Reporting to the Sauce Labs Dashboard](https://github.com/jsmoxon/JavaDocs#reporting-to-the-sauce-labs-dashboard)
 
 ##Prerequisites
 Before running automated tests on Sauce Labs you must install JDK 1.6 (or higher) (not JRE).
