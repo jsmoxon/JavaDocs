@@ -129,11 +129,11 @@ public class SampleSauceTest {
 The first thing you need to send to RemoteWebdriver is a URL that authorizes your tests to be run on a browser in the Sauce Labs cloud. The URL contains your Sauce username and access key which can be found on your account page.
 
 ####Two: Testing on Different Platforms
-The next thing we need to do is provide the test with information about what kind of platforms we want to run tests on.  
+The next thing we need to do is provide the test with information about what kind of platform(s) we want to run tests on.  
 
 Because we are not specifying FirefoxDriver() as we were in our local test we must use desired capabilities to specify what browser/OS combination(s) to spin up and execute against.
 
-DesiredCapabilities is a set of parameters and values that are sent to the Selenium server running in the Sauce Labs cloud. The parameters and values tell the Selenium server the specifications of the automated test that you plan to run. You can use the Platforms Configurator to easily determine the correct DesiredCapabilities for your test.
+DesiredCapabilities is a set of parameters and values that are sent to the Selenium server running in the Sauce Labs cloud. The parameters and values tell the Selenium server the specifications of the automated test that you plan to run. You can use the [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/) to easily determine the correct DesiredCapabilities for your test.
 
 You can  define the DesiredCapabilities as shown in the sample below:
 ```java
