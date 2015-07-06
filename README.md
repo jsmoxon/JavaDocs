@@ -126,7 +126,7 @@ public class SampleSauceTest {
 ```
 ####One: Pointing Tests to Run on Sauce
 
-The first thing you need to send to RemoteWebdriver is a URL that authorizes your tests to be run on a browser in the Sauce Labs cloud. The URL contains your Sauce username and access key which can be found on your dashboard.
+The first thing you need to send to RemoteWebdriver is a URL that authorizes your tests to be run on a browser in the Sauce Labs cloud. The URL contains your Sauce username and access key which can be found on your account page.
 
 ####Two: Testing on Different Platforms
 The next thing we need to do is provide the test with information about what kind of platforms we want to run tests on.  
