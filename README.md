@@ -186,7 +186,7 @@ Sauce Connect is a tunneling app which allows you to execute tests securely when
 ##Running Tests in Parallel
 Now that you are running tests on Sauce, you may wonder how you can run your tests faster. One way to increase speed is by running tests in parallel across multiple virtual machines.
 
-To achieve this in Java most use one of two popular third party frameworks: TestNG and Junit. Here are links to two example projects written in each. They are designed to run in parallel. You can clone them and add your own test cases if you want:
+Most Java users use one of two popular third party frameworks: TestNG or Junit. Here are links to two example projects written in each. They are designed to run in parallel. You can clone them and add your own test cases if you want:
 
 1. https://github.com/ndmanvar/SeleniumJavaJunit
 2. https://github.com/ndmanvar/SeleniumJavaTestNG
