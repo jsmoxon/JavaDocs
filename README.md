@@ -190,7 +190,7 @@ Most Java users use one of two popular third party frameworks: TestNG or Junit. 
 1. https://github.com/ndmanvar/SeleniumJavaJunit
 2. https://github.com/ndmanvar/SeleniumJavaTestNG
 
-__Note:__ *Tests can be run in parallel at two levels, you can run your tests in parallel and you can run your tests in parallel across multiple browsers. For example, if you have 10 tests and run them serially on 5 browsers this would be parallelism of 5. You can also run tests across browsers and each test in parallel. Using our previous example this would be 50 parallel tests (10 tests * 5 browsers). Doing the latter requires that your tests are written in a way that they do not collide with one another. For more on this see Selenium WebDriver - [Running Your Tests in Parallel blog]().*
+__Note:__ *Tests can be run in parallel at two levels, you can run your tests in parallel and you can run your tests in parallel across multiple browsers. For example, if you have 10 tests and run them serially on 5 browsers this would be parallelism of 5. You can also run tests across browsers and each test in parallel. Using our previous example this would be 50 parallel tests (10 tests * 5 browsers). Doing the latter requires that your tests are written in a way that they do not collide with one another. For more on this see Selenium WebDriver - [Running Your Tests in Parallel blog](https://saucelabs.com/selenium/selenium-webdriver).*
 
 ####Maven, Pom and Dependencies
 The first thing we need to do regardless of which framework we have chosen is to install a project management tool like [Maven](https://maven.apache.org/download.cgi) or Ant. We'll use Maven in this tutorial. 
