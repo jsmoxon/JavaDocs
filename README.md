@@ -39,11 +39,11 @@ We'll walk you through setting those things up one at a time so that you can see
 ##Prerequisites
 Before running automated tests on Sauce Labs you must install JDK 1.6 (or higher) (not JRE).
 
-__Note__: *To run tests in parallel or with a test framework like TestNG or Junit you will need to install a project managment and comprehension tool like Maven or Ant (explained later).*
+__Note__: *To run tests in parallel or with a test framework like TestNG or Junit you will need to install a project management and comprehension tool like Maven or Ant (explained later).*
 
 ##Code Example	
 
-Now let’s take a look at some simple Java code. The sample below verifies the title of the Amazon.com home page. Even though this example is simple, it contains everything needed to run an automated test on Sauce Labs.
+Now let’s take a look at some simple Java code. The sample below verifies the title of the Amazon.com home page. This example test doesn't have all the features we'd like, but it contains all the basics required to run an automated test on Sauce Labs:
 
 ```java
 import org.openqa.selenium.By;
@@ -176,7 +176,6 @@ DesiredCapabilities caps = new DesiredCapabilities();
     caps.setCapability("name", "Sauce Sample Test");
 
 ```
- Using our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) you can easily determine the correct desired capabilities for your test.
 
 ##Running tests against local applications
 If your test application is not publicly available you will need to use Sauce Connect so that Sauce can reach it. 
@@ -267,7 +266,7 @@ The Java helper library includes a Parallelized class that creates a dynamic thr
 
 ######1. Parallelizing the WebDriverTest Class
 
-As mentioned previously, the SampleSauceTest class demonstrates how to run it's tests in parallel. The test is parallelized by specifying the different parameters to test with, in this case the browser and platform. Behind the scenes, the test framework creates a different instance of the test class for each set of parameters and runs them in parallel. The parameters are passed to the constructor so each instance customizes it's behavior using those parameters.
+As mentioned previously, the SampleSauceTest class demonstrates how to run its tests in parallel. The test is parallelized by specifying the different parameters to test with, in this case the browser and platform. Behind the scenes, the test framework creates a different instance of the test class for each set of parameters and runs them in parallel. The parameters are passed to the constructor so each instance customizes its behavior using those parameters.
 
 In this example, we're parallelizing tests across different browsers on different platforms. Since testing an app in Firefox on Linux is independent of testing it in Chrome on Windows, we can safely run both tests in parallel. The static method browsersStrings() is annotated with com.saucelabs.junit.ConcurrentParameterized.Parameters, indicating it should be used to determine the parameters for each instance of the test. The method returns a LinkedList of parameters to use for each test instance's constructor. The SampleSauceTest constructor captures these parameters and setUp() uses them to configure the DesiredCapabilities.
 
