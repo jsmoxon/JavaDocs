@@ -1,8 +1,8 @@
 #Getting Started with Java
 
-Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium Webdriver (for web applications) and Appium (for native and mobile web applications).
+Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications).
 
-In this tutorial we discuss how to run a test with Selenium Webdriver and Java on Sauce Labs.
+In this tutorial we'll show you how to run a test with Selenium WebDriver and Java on Sauce Labs.
 
 ##Table of Contents
 1. [Quickstart](https://github.com/jsmoxon/JavaDocs#quickstart)
@@ -39,11 +39,11 @@ We'll walk you through setting those things up one at a time so that you can see
 ##Prerequisites
 Before running automated tests on Sauce Labs you must install JDK 1.6 (or higher) (not JRE).
 
-__Note__: *To run tests in parallel or with a test framework like TestNG or Junit you will need to install a project management and comprehension tool like Maven or Ant (explained later).*
+__Note__: *To run tests in parallel or with a test framework like TestNG or Junit you will need to install a project management and comprehension tool like Maven or Ant, as we'll explain in the section on Running Tests in Parallel.*
 
 ##Code Example	
 
-Now let’s take a look at some simple Java code. The sample below verifies the title of the Amazon.com home page. This example test doesn't have all the features we'd like, but it contains all the basics required to run an automated test on Sauce Labs:
+Now let’s take a look at some simple Java code that verifies the title of the Amazon.com home page. This example test doesn't have all the features we'd like, but it contains all the basics required to run an automated test on Sauce Labs:
 
 ```java
 import org.openqa.selenium.By;
@@ -96,9 +96,7 @@ public class SampleSauceTest {
 }
 
 ```
-You can use the commands shown below to compile and run a Java test class. The javac command is used to compile the Java test class and create a .class file. 
-
-For instance, the SampleSauceTest.java references all of the dependent jar files as shown in the following code sample.
+You can use these commands to compile and run a Java test class. The javac command is used to compile the Java test class and create a .class file. For instance, the SampleSauceTest.java references all of the dependent Jar files as shown in this code sample.
 
 ```
 javac -cp ".:./selenium-2.46.0/selenium-java-2.46.0.jar:./selenium-2.46.0/selenium-java-2.46.0-srcs.jar:./selenium-2.46.0/libs/*" SampleSauceTest.java
@@ -158,16 +156,14 @@ public class SampleSauceTest {
 ```
 ####One: Pointing Tests to Run on Sauce
 
-The first thing you need to send to RemoteWebdriver is a URL that authorizes your tests to be run on a browser in the Sauce Labs cloud. The URL contains your Sauce username and access key which can be found on your account page.
+The first thing you need to send to RemoteWebdriver is a URL that authorizes your tests to be run on a browser in the Sauce Labs cloud. The URL contains your Sauce username and access key, which can be found on your account page.
 
 ####Two: Testing on Different Platforms
 The next thing we need to do is provide the test with information about what kind of platform(s) we want to run tests on.  
 
-Because we are not specifying FirefoxDriver() as we were in our local test we must use desired capabilities to specify what browser/OS combination(s) to spin up and execute against.
+Because we are not specifying FirefoxDriver() as we were in our local test, we must use DesiredCapabilities to specify what browser/OS combination(s) to spin up and execute against. DesiredCapabilities is a set of parameters and values that are sent to the Selenium server running in the Sauce Labs cloud. The parameters and values tell the Selenium server the specifications of the automated test that you plan to run. You can use the [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/) to easily determine the correct DesiredCapabilities for your test.
 
-DesiredCapabilities is a set of parameters and values that are sent to the Selenium server running in the Sauce Labs cloud. The parameters and values tell the Selenium server the specifications of the automated test that you plan to run. You can use the [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/) to easily determine the correct DesiredCapabilities for your test.
-
-You can  define the DesiredCapabilities as shown in the sample below:
+You can  define the DesiredCapabilities as shown in this example:
 ```java
 DesiredCapabilities caps = new DesiredCapabilities();
     caps.setCapability(CapabilityType.BROWSER_NAME, "Mozilla Firefox");
@@ -177,32 +173,32 @@ DesiredCapabilities caps = new DesiredCapabilities();
 
 ```
 
-##Running tests against local applications
-If your test application is not publicly available you will need to use Sauce Connect so that Sauce can reach it. 
+##Running Tests Against local Applications
+If your test application is not publicly available, you will need to use Sauce Connect so that Sauce can reach it. 
 
-Sauce Connect is a tunneling app which allows you to execute tests securely when testing behind firewalls or on localhost. For more detailed information, please visit the [Sauce Connect docs](https://docs.saucelabs.com/reference/sauce-connect/). 
+Sauce Connect is a tunneling app that allows you to execute tests securely when testing behind firewalls or on localhost. For more detailed information, please see the [Sauce Connect docs](https://docs.saucelabs.com/reference/sauce-connect/). 
 
 ##Running Tests in Parallel
 Now that you are running tests on Sauce, you may wonder how you can run your tests faster. One way to increase speed is by running tests in parallel across multiple virtual machines.
 
-Most Java users use one of two popular third party frameworks: TestNG or Junit. Here are links to two example projects written in each. They are designed to run in parallel. You can clone them and add your own test cases if you want:
+Most Java users use one of two popular third party testing frameworks: TestNG or Junit. These links are for two example projects written in each. They are designed to run in parallel. You can clone them and add your own test cases if you want:
 
 1. https://github.com/ndmanvar/SeleniumJavaJunit
 2. https://github.com/ndmanvar/SeleniumJavaTestNG
 
-__Note:__ *Tests can be run in parallel at two levels, you can run your tests in parallel and you can run your tests in parallel across multiple browsers. For example, if you have 10 tests and run them serially on 5 browsers this would be parallelism of 5. You can also run tests across browsers and each test in parallel. Using our previous example this would be 50 parallel tests (10 tests * 5 browsers). Doing the latter requires that your tests are written in a way that they do not collide with one another. For more on this see Selenium WebDriver - [Running Your Tests in Parallel blog](https://saucelabs.com/selenium/selenium-webdriver).*
+__Note:__ *Tests can be run in parallel at two levels, you can run your tests in parallel and you can run your tests in parallel across multiple browsers. For example, if you have 10 tests and run them serially on five browsers, this would be parallelism of five. You can also run tests across browsers and each test in parallel. Using our previous example, this would be 50 parallel tests (10 tests * 5 browsers). This requires that your tests are written in a way that they do not collide with one another. For more on this see Selenium WebDriver - [Running Your Tests in Parallel blog](https://saucelabs.com/selenium/selenium-webdriver).*
 
 ####Maven, Pom and Dependencies
 The first thing we need to do regardless of which framework we have chosen is to install a project management tool like [Maven](https://maven.apache.org/download.cgi) or Ant. We'll use Maven in this tutorial. 
 
-Once Maven is installed we need to update the POM. A POM (Project Object Model) is an XML file used in Maven. The pom.xml stores information about a project like configuration details used during the build process.
+Once Maven is installed we need to update the POM (Project Object Model), an XML file used in Maven. The pom.xml stores information about a project like configuration details used during the build process.
 
 The dependency list is the most important feature of a POM. Almost every project depends upon other pieces to build and run the project correctly. The dependency list is used to download and link the compiled dependencies.
 
 Three dependencies are required to run tests in parallel on Sauce:
 
 ######1. Selenium Dependency 
-The first thing you need to do is add the following common Selenium dependency to the pom.xml file regardless of the framework you are using to write your tests (e.g., Junit, TestNG, etc.). This tells your project which version of Selenium to use.
+The first thing you need to do is add the following common Selenium dependency to the pom.xml file regardless of the framework you are using to write your tests. This tells your project which version of Selenium to use.
 
 ```xml
 <dependency>
@@ -215,7 +211,7 @@ The first thing you need to do is add the following common Selenium dependency t
 ```
 
 ######2. Framework Dependency
-This is where you specify whether it is Junit or TestNG you are using. 
+This is where you specify whether your are using Junit or TestNG as your framework. 
 
 For Junit: 
 
@@ -335,19 +331,18 @@ TestNG has built in support for running tests in parallel. All you need to do is
 Don't forget to match your thread count to your concurrency limit. 
 
 ##Reporting to the Sauce Labs Dashboard
-The following best practices to enhance the user experience while using Sauce Labs with Java:
+Follow these best practices to enhance your user experience while using Sauce Labs with Java:
 
 ######1. Reporting Test Results
-If you have installed the Java Helper Library for your chosen framework then your test information (like test name and pass/fail status) will automatically show up in your Sauce [Dashboard](https://saucelabs.com/beta/dashboard). 
+If you have installed the Java Helper Library for your chosen framework, then your test information (like test name and pass/fail status) will automatically show up in your Sauce [Dashboard](https://saucelabs.com/beta/dashboard). 
 
 Here are instructions for [installing the Java Helper Library for TestNG and Junit](https://github.com/jsmoxon/JavaDocs#3-java-helper-library).
 
 ######2. Tagging Tests
 
-Sauce Labs allows you to “tag” your tests with different labels and variables like: build ID, name, or custom. Sauce uses DesiredCapabilities to do this.
+Sauce Labs allows you to “tag” your tests with different labels and variables like build ID, name, or custom. Sauce uses DesiredCapabilities to do this.
 
-You can use assign build number/tag(s) to search or identify the test result with a particular build number or tag(s) once your test is complete.
-You can define the build number/tag(s) while defining the DesiredCapabilities as shown in the sample below:
+You can use assign build number/tag(s) to search or identify the test result with a particular build number or tag(s) once your test is complete. You can define the build number/tag(s) while defining the DesiredCapabilities as shown in the sample below:
 
 ```java
 @BeforeMethod
