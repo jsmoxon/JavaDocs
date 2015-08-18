@@ -17,16 +17,16 @@ In this tutorial we'll show you how to run a test with Selenium WebDriver and Ja
 Configuring Selenium tests to run on Sauce Labs is simple. The basic change is just to switch from using a local Selenium driver:
 
 ```java
-WebDriver driver = new FirefoxDriver()
+WebDriver driver = new FirefoxDriver();
 ```
 
 To using a remote driver pointed at ondemand.saucelabs.com, specifying your Sauce Labs account credentials and desired browser configuration:
 
 ```java
-DesiredCapabilities caps = DesiredCapabilities.chrome();
-caps.setCapability("platform", "Windows 8.1");
-caps.setCapability("version", "43.0");
-WebDriver driver = new RemoteWebDriver(new URL("http://USERNAME:ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub"), caps);
+DesiredCapabilities caps = DesiredCapabilities.firefox();
+caps.setCapability("platform", "Windows 7");
+caps.setCapability("version", "38.0");
+WebDriver driver = new RemoteWebDriver(new URL("http://YOUR_USERNAME:YOUR_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub"), caps);
 ```
 
 To get things working really well, we recommend adding a number of features to your setup from here:
@@ -46,68 +46,68 @@ __Note__: *To run tests in parallel or with a test framework like TestNG or Juni
 Now let’s take a look at some simple Java code that verifies the title of the Amazon.com home page. This example test doesn't have all the features we'd like, but it contains all the basics required to run an automated test on Sauce Labs:
 
 ```java
-import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.CapabilityType;
 
 import java.net.URL;
 
 public class SampleSauceTest {
 
-/**
-* Creates an authentication instance using the supplied user name/access key.
-*/
-
   public static final String USERNAME = System.getenv("SAUCE_USERNAME");
   public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
   public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
 
-/**
-* Represents the browser type, version, and operating system to be used as part * of the test run.
-*/
-
   public static void main(String[] args) throws Exception {
 
-    DesiredCapabilities caps = new DesiredCapabilities();
-    caps.setCapability(CapabilityType.BROWSER_NAME, "internet explorer");
-    caps.setCapability(CapabilityType.VERSION, "11");
-    caps.setCapability(CapabilityType.PLATFORM, "Windows 7");
-    caps.setCapability("name", "Sauce Sample Test");
-
-/**
-* Runs a simple test verifying the title of the amazon.com homepage.
-*/
+    DesiredCapabilities caps = DesiredCapabilities.chrome();
+    caps.setCapability("platform", "Windows XP");
+    caps.setCapability("version", "43.0");
 
     WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
-    driver.get("http://www.amazon.com");
-    WebElement element = driver.findElement(By.name("field-keywords"));
+    
+    /**
+    * Goes to Sauce Lab's guinea-pig page and prints title
+    */
+    
+    driver.get("https://saucelabs.com/test/guinea-pig");
+    System.out.println("title of page is: " + driver.getTitle());
 
-    element.sendKeys("Sauce Labs");
-    element.submit();
-
-    System.out.println(driver.getTitle());
     driver.quit();
-
   }
 }
-
 ```
 You can use these commands to compile and run a Java test class. The javac command is used to compile the Java test class and create a .class file. For instance, the SampleSauceTest.java references all of the dependent Jar files as shown in this code sample.
 
+First you will have to download and unzip selenium-java client.
+It can be found at http://www.seleniumhq.org/download/ under the "Selenium Client & WebDriver Language Bindings" section. Download the java selenium client.
+
+Latest version of selenium at the time of writing this doc was 2.46.0.
+If not using 2.46.0, Please substitue the downloaded version for 2.46.0.
+
+For Mac or Linux:
 ```
-javac -cp ".:./selenium-2.46.0/selenium-java-2.46.0.jar:./selenium-2.46.0/selenium-java-2.46.0-srcs.jar:./selenium-2.46.0/libs/*" SampleSauceTest.java
+    javac -cp ".:./selenium-2.46.0/selenium-java-2.46.0.jar:./selenium-2.46.0/libs/*" SampleSauceTest.java
 ```
+
+For Windows:
+```
+    javac -cp ".;./selenium-2.46.0/selenium-java-2.46.0.jar;./selenium-2.46.0/libs/*" -encoding UTF-8 SampleSauceTest.java
+```
+
 
 __Note:__ *You need to specify the correct path for each Jar file in accordance to your system’s file structure.*
 
 The java command is used to run the compiled .class file.
 
+For Mac or Linux:
 ```
-java -cp ".:./selenium-2.46.0/selenium-java-2.46.0.jar:./selenium-2.46.0/selenium-java-2.46.0-srcs.jar:./selenium-2.46.0/libs/*" SampleSauceTest
+    java -cp ".:./selenium-2.46.0/selenium-java-2.46.0.jar:./selenium-2.46.0/libs/*" SampleSauceTest
+```
+
+For Windows:
+```
+    java -cp ".;./selenium-2.46.0/selenium-java-2.46.0.jar;./selenium-2.46.0/libs/*" SampleSauceTest
 ```
 
 ##Running Tests on Sauce
@@ -141,18 +141,16 @@ public class SampleSauceTest {
 
   public static void main(String[] args) throws Exception {
 
-    DesiredCapabilities caps = new DesiredCapabilities();
-    caps.setCapability(CapabilityType.BROWSER_NAME, "internet explorer");
-    caps.setCapability(CapabilityType.VERSION, "11");
-    caps.setCapability(CapabilityType.PLATFORM, "Windows 7");
+    DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
+    caps.setCapability("platform", "Windows 7");
+    caps.setCapability("version", "11.0");
     caps.setCapability("name", "Sauce Sample Test");
 
-/**
-* Runs a simple test verifying the title of the amazon.com homepage.
-*/
-
     WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+    ...
 
+  }
+}
 ```
 ####One: Pointing Tests to Run on Sauce
 
@@ -345,19 +343,15 @@ Sauce Labs allows you to “tag” your tests with different labels and variable
 You can use assign build number/tag(s) to search or identify the test result with a particular build number or tag(s) once your test is complete. You can define the build number/tag(s) while defining the DesiredCapabilities as shown in the sample below:
 
 ```java
-@BeforeMethod
-    public void setUp() throws Exception {
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("version", "17");
-        capabilities.setCapability("platform", Platform.XP);
-        capabilities.setCapability("name", "Web Driver demo Test");
-        capabilities.setCapability("tags", "Tag1");
-        capabilities.setCapability("build", "v1.0");
-        this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
-                capabilities);
-        driver.get("http://tutorialapp.saucelabs.com");
-    }
+        DesiredCapabilities caps = DesiredCapabilities.firefox();
+        caps.setCapability("platform", "Windows XP");
+        caps.setCapability("version", "37.0");
+        caps.setCapability("name", "Web Driver demo Test");
+        caps.setCapability("tags", "Tag1");
+        caps.setCapability("build", "v1.0");
+        WebDriver driver = new RemoteWebDriver(
+                new URL("http://YOUR_USERNAME:YOUR_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub"),
+                caps);
 ```
 
 Assigning build numbers in your tests allows you to group your tests on the Sauce Labs Dashboard by builds as shown in the image below:
